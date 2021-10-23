@@ -10,6 +10,11 @@ function Map({ searchResults }) {
         latitude: result.lat,
     }));
 
+    // const coordinates = searchResults.map((result) => ({
+    //     longitude: result.long,
+    //     latitude: result.lat,
+    // }));
+
     const center = getCenter(coordinates);
 
     const [viewport, setViewport] = useState({

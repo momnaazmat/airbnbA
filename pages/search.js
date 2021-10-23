@@ -6,9 +6,8 @@ import { useRouter } from "next/dist/client/router";
 import { format } from "date-fns";
 
 
-function search({searchResults}) {
-    const router = useRouter();
-    console.log(searchResults);
+function search({ searchResults }) {
+    const router = useRouter(); 
     const { location, startDate, endDate, noOfGuests} = router.query;
     const formattedStartDate = format(new Date(startDate), "dd MMMM yy");
     const formattedEndDate = format(new Date(endDate), "dd MMMM yy");
@@ -45,7 +44,7 @@ function search({searchResults}) {
                     </div>
                 </section>
                 <section className="hidden xl:inline-flex xl:min-w-[600px]">
-                    <Map />
+                    <Map searchResults={searchResults}/>
                 </section>
 
             </main>
