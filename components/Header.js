@@ -6,6 +6,8 @@ import 'react-date-range/dist/theme/default.css';
 import { DateRangePicker } from 'react-date-range';
 import { useRouter } from "next/dist/client/router";
 import search from "../pages/search";
+import { signIn, signOut } from "next-auth/react";
+
 
 
 function header({placeholder}) {
@@ -35,12 +37,19 @@ function header({placeholder}) {
             },
         });
     };
+    const signIn = () => {
+        router.push({
+            pathname: "/auth/signIn",
+
+        });
+    };
 
     const SelectionRange = {
         startDate: startDate,
         endDate: endDate,
         key: "selection",
     };  
+
 
 
     return (
@@ -74,6 +83,12 @@ function header({placeholder}) {
                     <MenuIcon className="h-8"/>
                     <UserCircleIcon className="h-8"/>
                 </div>
+                <div className="grid  grid-cols-1 ">
+                    <button onClick={signIn} className="hidden md:inline hover:scale-105 cursor-pointer text-red-400 font-semibold ">Sign in</button>
+                    <span className="h-1"></span>
+                    <button onClick={signOut} className="hidden md:inline hover:scale-105 cursor-pointer text-red-400 font-semibold ">Sign out</button>
+                </div>
+
             </div>
 
             {searchInput && (
